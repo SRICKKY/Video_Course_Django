@@ -29,7 +29,7 @@
 							{% if object.membership_type != current_membership %}
 								<button class="btn btn-lg btn-block btn-outline-primary">Select</button>
 							{% else %}
-								<small>This is your current membership</small>
+								<small class="text-success">This is your current membership</small>
 							{% endif %}
 							<input type="hidden" name="membership_type" value="{{ object.membership_type }}">
 						</form>
