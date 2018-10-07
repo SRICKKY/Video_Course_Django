@@ -2,12 +2,11 @@
 
 {% block content %}
 	<h1>Course List View Page</h1>
-  <div class="row">
-    
+  <div class="row">  
   	{% for object in object_list %}
-  		<div class="col-sm mb-3 mr-3 ">
+  		<div class="col mb-3 mr-3 ">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://source.unsplash.com/1600x900/?coding,program,programminglanguage" alt="Card image cap">
+            <img class="card-img-top" src="https://source.unsplash.com/1600x900/?{{object.title}},coding,programming" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{ object.title }}</h5>
               <p class="card-text">{{ object.description | truncatechars:100 }}</p>
@@ -19,6 +18,7 @@
 	</div>
 
 {% endblock %}
+
 
 
 
@@ -68,4 +68,4 @@
 
 
 
-{% endblock footer %}
+{% endblock %}
