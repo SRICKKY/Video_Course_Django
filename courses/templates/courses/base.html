@@ -1,29 +1,39 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Video Membership</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="{% static 'css/main.css' %}"> -->
+	<style>
+		body{
+			background-image: linear-gradient(to bottom right, #b6dfb2, #8bd5d9);
+		}
+	</style>
+
 
 </head>
 <body>
 	{% include 'courses/messages.html' %}
+	<br>
 	<div class="container">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
 				<li class="breadcrumb-item"><a href="/profile">Profile</a></li>
+				<li class="breadcrumb-item"><a href="/courses">Courses</a></li>
 				{% block post_detail_link %}
 				    
 				{% endblock %}
 
 				{% if not request.user.is_authenticated %}
-					<li class="text-right breadcrumb-item"><a href="/register">Register</a></li>
-					<li class="text-right breadcrumb-item"><a href="/login">Login</a></li>
+					<li class="ml-auto"><a href="/register">Register</a></li>
+					<li>&nbsp;<small>/</small>&nbsp;<a href="/login">Login</a></li>
 				{% else %}
-					<li class="text-right breadcrumb-item"><a href="/memberships">Memberships</a></li>
+					<li class="ml-auto"><a href="/memberships">Memberships</a></li>
 				{% endif %}
 			</ol>
 		</nav>
@@ -32,6 +42,12 @@
 		{% block content %}
 		{% endblock content %}
 	</div>
+
+	<!-- Footer -->
+	{% block footer %}
+	    
+	{% endblock footer %}
+	<!-- Footer Ends Here -->
 
 
 	<!-- Bootstrap Minified JS -->

@@ -2,33 +2,46 @@
 
 {% block content %}
 <div class="container">
-	<h1>Select a Membership</h1>
+	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		  <h1 class="display-4">Select a Membership</h1>
+		  <p class="lead">These courses are highly rated, and made my excellent faculties. All the courses are up-to-date and currently in trend.</p>
+    </div>
 	<div class="row">
 		{% for object in object_list %}
-		<div class="col">
-			<div>
-				<h2>{{ object.membership_type }}</h2>
-				<p>Price: Rs.{{ object.price }}<small>/month</small></p>
-				<h4>Included Courses</h4>
-				<ul>
-					{% for course in object.course_set.all %}
-						<li>{{ course.title }}</li>
-					{% endfor %}
-				</ul>
-				{% if object.memebership_type != 'Free' %}
-				<form action="{% url 'memberships:select' %}" method="POST">
-					{% csrf_token %}
-					{% if object.membership_type != current_membership %}
-						<button class="btn btn-warning">Select</button>
-					{% else %}
-						<small>This is your current membership</small>
-					{% endif %}
-					<input type="hidden" name="membership_type" value="{{ object.membership_type }}">
-				</form>
-				{% endif %}
+			<div class="col">
+			    <div class="card-deck mb-3 text-center">
+			        <div class="card mb-4 box-shadow">
+			          <div class="card-header">
+			            <h4 class="my-0 font-weight-normal">{{ object.membership_type }}</h4>
+			          </div>
+			          <div class="card-body">
+			            <h1 class="card-title pricing-card-title">Price: Rs.{{ object.price }}<small class="text-muted">/month</small></h1>
+			            <h4>Included Courses</h4>
+			            <ul class="list-group mt-3 mb-4">
+			        		{% for course in object.course_set.all %}
+									<li class="list-group-item">{{ course.title }}</li>
+							{% endfor %}
+			            </ul>
+						
+						{% if object.memebership_type != 'Free' %}
+						<form action="{% url 'memberships:select' %}" method="POST">
+							{% csrf_token %}
+							{% if object.membership_type != current_membership %}
+								<button class="btn btn-lg btn-block btn-outline-primary">Select</button>
+							{% else %}
+								<small>This is your current membership</small>
+							{% endif %}
+							<input type="hidden" name="membership_type" value="{{ object.membership_type }}">
+						</form>
+						{% endif %}
+			          </div>
+			        </div>
+			    </div>
 			</div>
-		</div>
 		{% endfor %}
 	</div>
 </div>
 {% endblock content %}
+
+
+
