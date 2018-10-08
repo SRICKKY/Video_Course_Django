@@ -4,12 +4,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
 
 from .models import Membership, UserMembership, Subscription
 
 import stripe
 
-
+@login_required
 def profile_view(request):
 	user_membership = get_user_membership(request)
 	user_subscription = get_user_subscription(request)
@@ -59,9 +61,9 @@ class MembershipSelectView(ListView):
 
 		selected_membership_qs = Membership.objects.filter(
 				membership_type=selected_membership_type)
-		print(selected_membership_qs)
+		# print(selected_membership_qs)
 		selected_membership = selected_membership_qs.first()
-		print(selected_membership)
+		# print(selected_membership)
 		'''
 		==========
 		VALIDATION
@@ -80,7 +82,7 @@ class MembershipSelectView(ListView):
 		return HttpResponseRedirect(reverse('memberships:payment'))
 
 
-
+@login_required
 def PaymentView(request):
 
 	user_membership = get_user_membership(request)

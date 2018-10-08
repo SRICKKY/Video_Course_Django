@@ -9,7 +9,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('courses/', include('courses.urls',namespace='courses')),
-    path('memberships/', include('memberships.urls', namespace='memberships'))
+    path('memberships/', include('memberships.urls', namespace='memberships')),
+    path('account/', include('account.urls'))
 ]
 
 if settings.DEBUG:

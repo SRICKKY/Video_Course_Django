@@ -1,0 +1,12 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Logged out{% endblock %}
+
+{% block content %}
+	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		  <h1 class="display-4">See You soon !</h1>
+		  <p class="lead">
+		  	You have been successfully logged out. You can <a href="{% url "account:login" %}">log-in again</a>.
+		  </p>
+    </div>
+{% endblock %}

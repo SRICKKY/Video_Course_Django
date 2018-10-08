@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from django.views.generic import ListView, DetailView, View
 
+
 from .models import Course
 from memberships.models import UserMembership
 
