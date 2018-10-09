@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 from .models import Membership, UserMembership, Subscription
@@ -44,7 +46,7 @@ def get_selected_membership(request):
 	return None
 
 
-class MembershipSelectView(ListView):
+class MembershipSelectView(LoginRequiredMixin,ListView):
 	model = Membership
 
 	def get_context_data(self, *args, **kwargs):
